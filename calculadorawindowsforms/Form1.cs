@@ -12,6 +12,11 @@ namespace calculadorawindowsforms
 {
     public partial class Form1 : Form
     {
+        double num1 = 0;
+        double num2 = 0;
+        char operacao;
+        Operacoes op = new Operacoes();
+
         public Form1()
         {
             InitializeComponent();
@@ -27,10 +32,12 @@ namespace calculadorawindowsforms
             this.textResultado.Text = this.textResultado.Text + ",";
         }
 
-      
+
         private void btnSubtracao_Click(object sender, EventArgs e)
         {
+            num1 = Double.Parse(this.textResultado.Text);
             this.textResultado.Text = this.textResultado.Text + "-";
+            operacao = '-';
         }
 
         private void btnUm_Click(object sender, EventArgs e)
@@ -60,12 +67,51 @@ namespace calculadorawindowsforms
 
         private void btnIgual_Click(object sender, EventArgs e)
         {
-            this.textResultado.Text = this.textResultado.Text + "=";
+            string[] splitNumbers = this.textResultado.Text.Split(operacao);
+            if (splitNumbers.Length == 2)
+            {
+                if (this.textResultado.Text.Contains("+") || this.textResultado.Text.Contains("-") ||
+                    this.textResultado.Text.Contains("*") || this.textResultado.Text.Contains("/"))
+                {
+                    num2 = Double.Parse(splitNumbers[1].ToString());
+                    switch (operacao)
+                    {
+                        case '+':
+                            this.textResultado.Text = this.textResultado.Text + " = " + op.Soma(num1, num2).ToString();
+                            break;
+                        case '-':
+                            this.textResultado.Text = this.textResultado.Text + " = " + op.Subtracao(num1, num2).ToString();
+                            break;
+                        case '*':
+                            this.textResultado.Text = this.textResultado.Text + " = " + op.Multiplicacao(num1, num2).ToString();
+                            break;
+                        case '/':
+                            this.textResultado.Text = this.textResultado.Text + " = " + op.Divisao(num1, num2).ToString();
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Digite uma operação");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Insira 2 numeros para realizar a operação");
+            }
+
         }
+
 
         private void btnSoma_Click(object sender, EventArgs e)
         {
+            num1 = Double.Parse(this.textResultado.Text);
             this.textResultado.Text = this.textResultado.Text + "+";
+            operacao = '+';
         }
 
         private void btnSeis_Click(object sender, EventArgs e)
@@ -90,12 +136,16 @@ namespace calculadorawindowsforms
 
         private void btnMultiplicacao_Click(object sender, EventArgs e)
         {
+            num1 = Double.Parse(this.textResultado.Text);
             this.textResultado.Text = this.textResultado.Text + "*";
+            operacao = '*';
         }
 
         private void btnDivisao_Click(object sender, EventArgs e)
         {
+            num1 = Double.Parse(this.textResultado.Text);
             this.textResultado.Text = this.textResultado.Text + "/";
+            operacao = '/';
         }
     }
 }
