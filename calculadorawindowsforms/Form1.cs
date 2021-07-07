@@ -147,5 +147,10 @@ namespace calculadorawindowsforms
             this.textResultado.Text = this.textResultado.Text + "/";
             operacao = '/';
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textResultado.Text = ""; 
+        }
     }
 }

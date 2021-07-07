@@ -46,10 +46,12 @@ namespace calculadorawindowsforms
             this.btnDivisao = new System.Windows.Forms.Button();
             this.btnMultiplicacao = new System.Windows.Forms.Button();
             this.btnIgual = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textResultado
             // 
+            this.textResultado.Enabled = false;
             this.textResultado.Location = new System.Drawing.Point(9, 10);
             this.textResultado.Multiline = true;
             this.textResultado.Name = "textResultado";
@@ -216,11 +218,22 @@ namespace calculadorawindowsforms
             this.btnIgual.UseVisualStyleBackColor = true;
             this.btnIgual.Click += new System.EventHandler(this.btnIgual_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 284);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(318, 43);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "APAGAR";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 286);
+            this.ClientSize = new System.Drawing.Size(336, 331);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnIgual);
             this.Controls.Add(this.btnMultiplicacao);
             this.Controls.Add(this.btnDivisao);
@@ -264,6 +277,7 @@ namespace calculadorawindowsforms
         private System.Windows.Forms.Button btnDivisao;
         private System.Windows.Forms.Button btnMultiplicacao;
         private System.Windows.Forms.Button btnIgual;
+        private System.Windows.Forms.Button button1;
     }
 }
 
